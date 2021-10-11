@@ -15,11 +15,8 @@ use Inertia\Inertia;
 |
 */
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return Inertia::render('Groups', [
-
-    ]);
-});
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/', [HomeController::class, 'index']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
