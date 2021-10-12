@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/groups', [\App\Http\Controllers\Api\GroupController::class, 'store'])
+    ->name('api.groups.store');

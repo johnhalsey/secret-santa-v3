@@ -16,7 +16,7 @@ class Group extends Model
      */
     protected $fillable = [
         'name',
-        'drawn',
+        'organiser_id',
         'drawn_at'
     ];
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,8 +16,11 @@ use Inertia\Inertia;
 |
 */
 
+Route::middleware('guest')->get('/', function() {});
+
 Route::middleware(['auth:sanctum', 'verified'])
-    ->get('/', [HomeController::class, 'index']);
+    ->get('groups', [GroupController::class, 'index'])
+    ->name('groups');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
