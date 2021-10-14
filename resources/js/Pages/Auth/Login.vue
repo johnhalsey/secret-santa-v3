@@ -53,8 +53,12 @@
     import JetLabel from '@/Jetstream/Label.vue'
     import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
+    import PlainLayout from "../../Layouts/PlainLayout"
 
     export default defineComponent({
+
+        layout: PlainLayout,
+
         components: {
             Head,
             JetAuthenticationCard,

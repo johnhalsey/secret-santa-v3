@@ -51,8 +51,9 @@
     export default defineComponent({
         props: ['sessions'],
 
+        layout: AppLayout,
+
         components: {
-            AppLayout,
             DeleteUserForm,
             JetSectionBorder,
             LogoutOtherBrowserSessionsForm,

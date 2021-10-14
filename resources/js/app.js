@@ -5,6 +5,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import AppLayout from "./Layouts/AppLayout"
 import Container from "./Layouts/Partials/Container"
+import Card from './Layouts/Partials/Card'
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
@@ -20,6 +21,7 @@ createInertiaApp({
             .use(plugin)
             .mixin({ methods: { route } })
             .component('Container', Container)
+            .component('Card', Card)
             .mount(el);
     },
 });

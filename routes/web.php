@@ -18,10 +18,12 @@ use Inertia\Inertia;
 
 Route::middleware('guest')->get('/', function() {});
 
-Route::middleware(['auth:sanctum', 'verified'])
-    ->get('groups', [GroupController::class, 'index'])
+Route::get('groups', [GroupController::class, 'index'])
     ->name('groups');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::get('groups/{group}', [GroupController::class, 'show'])
+    ->name('group.show');
+
+Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');

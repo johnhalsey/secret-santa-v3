@@ -20,3 +20,6 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/groups', [\App\Http\Controllers\Api\GroupController::class, 'store'])
     ->name('api.groups.store');
+
+Route::post('/group/{group}/users', [\App\Http\Controllers\Api\GroupMemberController::class, 'store'])
+    ->name('api.group.user.store');

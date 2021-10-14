@@ -224,7 +224,7 @@
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="mt-5">
                 <slot></slot>
             </main>
         </div>
