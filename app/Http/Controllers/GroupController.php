@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GroupResource;
 use App\Models\Group;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -18,7 +19,7 @@ class GroupController extends Controller
     public function show(Request $request, Group $group)
     {
         return Inertia::render('Groups/ShowGroupPage', [
-            'group' => $group->with('members.user')->first(),
+            'group' => new GroupResource($group),
         ]);
     }
 }

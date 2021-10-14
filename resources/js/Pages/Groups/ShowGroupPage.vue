@@ -1,6 +1,6 @@
 <template>
     <container>
-        <h3>{{group.name}}</h3>
+        <h3>{{ group.name }}</h3>
         <div class="md:flex">
             <div class="w-full md:w-1/2 lg:w-1/4">
                 <card>
@@ -36,14 +36,16 @@
             <div class="w-full md:w-1/2 lg:w-3/4 p-6">
 
                 <table>
-                    <tr v-for="user in group.members">
-                        <td>
-                            {{user.user.name}}
-                        </td>
-                        <td>
-                            {{user.user.email}}
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr v-for="user in group.members">
+                            <td>
+                                {{ user.name }}
+                            </td>
+                            <td>
+                                {{ user.email }}
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -78,8 +80,9 @@ export default {
 
     methods: {
         addUser () {
+            console.log(this.group.id)
             this.form
-                .post(this.route('api.group.users.store', {group: this.group.id}), {
+                .post(this.route('api.group.members.store', this.group.id), {
                     onSuccess: () => this.resetAddUserForm()
                 })
         },
