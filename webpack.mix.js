@@ -21,3 +21,18 @@ mix.js('resources/js/app.js', 'public/js').vue()
 if (mix.inProduction()) {
     mix.version();
 }
+
+mix.webpackConfig({
+    module: {
+        rules: [
+            {
+                test: /\.(postcss)$/,
+                use: [
+                    'vue-style-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    'postcss-loader'
+                ]
+            }
+        ],
+    },
+})
