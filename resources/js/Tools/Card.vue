@@ -8,6 +8,6 @@
 
 <script>
 export default {
-    name: "Card"
+    name: "CardTool"
 }
 </script>

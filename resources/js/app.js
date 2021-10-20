@@ -5,7 +5,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import AppLayout from "./Layouts/AppLayout"
 import Container from "./Layouts/Partials/Container"
-import Card from './Layouts/Partials/Card'
+import Card from './Tools/Card'
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 

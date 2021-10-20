@@ -26,7 +26,7 @@
 
             <div class="w-full md:w-1/2 lg:w-3/4 p-6">
 
-                <table>
+                <table-tool>
                     <tr v-for="group in groups">
                         <td>
                             <Link :href="route('group.show', {'group': group.id})" class="underline text-sm text-gray-600 hover:text-gray-900">
@@ -35,7 +35,7 @@
 
                         </td>
                     </tr>
-                </table>
+                </table-tool>
             </div>
         </div>
 
@@ -48,6 +48,7 @@ import JetButton from '@/Jetstream/Button.vue'
 import JetInput from '@/Jetstream/Input.vue'
 import JetLabel from '@/Jetstream/Label.vue'
 import { Link } from '@inertiajs/inertia-vue3';
+import TableTool from "../Tools/Table"
 
 export default {
     name: "Groups",
@@ -55,7 +56,8 @@ export default {
         JetInput,
         JetLabel,
         JetButton,
-        Link
+        Link,
+        TableTool
     },
     props: ['groups'],
     data () {
