@@ -1806,6 +1806,10 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(209, 213, 219, var(--tw-text-opacity));
 }
+.text-red-400 {
+	--tw-text-opacity: 1;
+	color: rgba(248, 113, 113, var(--tw-text-opacity));
+}
 .underline {
 	text-decoration: underline;
 }
@@ -1966,6 +1970,10 @@ h4 {
 .hover\:text-gray-900:hover {
 	--tw-text-opacity: 1;
 	color: rgba(17, 24, 39, var(--tw-text-opacity));
+}
+.hover\:text-red-900:hover {
+	--tw-text-opacity: 1;
+	color: rgba(127, 29, 29, var(--tw-text-opacity));
 }
 .focus\:z-10:focus {
 	z-index: 10;

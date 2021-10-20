@@ -29,7 +29,8 @@
                 <table-tool>
                     <tr v-for="group in groups">
                         <td>
-                            <Link :href="route('group.show', {'group': group.id})" class="underline text-sm text-gray-600 hover:text-gray-900">
+                            <Link :href="route('group.show', {'group': group.id})"
+                                  class="text-red-500 hover:text-red-900">
                                 {{group.name}}
                             </Link>
 

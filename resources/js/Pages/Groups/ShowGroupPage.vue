@@ -35,18 +35,16 @@
 
             <div class="w-full md:w-1/2 lg:w-3/4 p-6">
 
-                <table>
-                    <tbody>
-                        <tr v-for="user in group.members">
-                            <td>
-                                {{ user.name }}
-                            </td>
-                            <td>
-                                {{ user.email }}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <table-tool>
+                    <tr v-for="user in group.members">
+                        <td>
+                            <span class="text-gray-600">{{ user.name }}</span>
+                        </td>
+                        <td>
+                            <span class="text-gray-600">{{ user.email }}</span>
+                        </td>
+                    </tr>
+                </table-tool>
             </div>
         </div>
     </container>
@@ -57,7 +55,7 @@
 import JetLabel from '../../Jetstream/Label'
 import JetButton from "../../Jetstream/Button"
 import JetInput from "../../Jetstream/Input"
-
+import TableTool from '../../Tools/Table'
 
 export default {
     name: "ShowGroupPage",
@@ -66,7 +64,8 @@ export default {
     components: {
         JetLabel,
         JetButton,
-        JetInput
+        JetInput,
+        TableTool
     },
 
     data () {
