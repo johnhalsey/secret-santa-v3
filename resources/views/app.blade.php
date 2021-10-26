@@ -9,6 +9,9 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <!-- Font Awesome -->
+        <link href="/fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
+
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
