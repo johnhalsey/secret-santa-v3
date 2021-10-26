@@ -64,7 +64,7 @@
                 </card>
             </div>
 
-            <div class="w-full md:w-1/2 lg:w-3/4 p-6">
+            <div class="w-full md:w-1/2 lg:w-3/4 p-6 pr-0">
 
                 <table-tool>
                     <tr v-for="user in group.members">
@@ -116,7 +116,6 @@ export default {
 
     methods: {
         addUser () {
-            console.log(this.group.id)
             this.form
                 .post(this.route('api.group.members.store', this.group.id), {
                     onSuccess: () => this.resetAddUserForm()

@@ -21580,7 +21580,6 @@ __webpack_require__.r(__webpack_exports__);
     addUser: function addUser() {
       var _this = this;
 
-      console.log(this.group.id);
       this.form.post(this.route('api.group.members.store', this.group.id), {
         onSuccess: function onSuccess() {
           return _this.resetAddUserForm();
@@ -25495,7 +25494,7 @@ var _hoisted_7 = {
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add User ");
 
 var _hoisted_9 = {
-  "class": "w-full md:w-1/2 lg:w-3/4 p-6"
+  "class": "w-full md:w-1/2 lg:w-3/4 p-6 pr-0"
 };
 var _hoisted_10 = {
   "class": "text-gray-600"
