@@ -4,7 +4,38 @@
         <div class="md:flex">
             <div class="w-full md:w-1/2 lg:w-1/4">
                 <card>
-                    <form @submit.prevent="addUser">
+                    <h4>Step 1 - Add Users</h4>
+                    <form @submit.prevent="addUser" class="mt-3">
+                        <div>
+                            <jet-label for="name" value="User name"/>
+                            <jet-input id="name"
+                                       type="text"
+                                       class="mt-1 block w-full"
+                                       v-model="form.name"
+                                       required
+                                       ref="user-name"
+                                       autofocus/>
+                        </div>
+                        <div>
+                            <jet-label for="email" value="User email"/>
+                            <jet-input id="email"
+                                       type="email"
+                                       class="mt-1 block w-full"
+                                       v-model="form.email"
+                                       required
+                                       ref="user-email"/>
+                        </div>
+                        <div class="mt-3">
+                            <jet-button class="" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                Add User
+                            </jet-button>
+                        </div>
+                    </form>
+                </card>
+
+                <card class="">
+                    <h4>Step 2 - Add Rules</h4>
+                    <form @submit.prevent="addUser" class="mt-3">
                         <div>
                             <jet-label for="name" value="User name"/>
                             <jet-input id="name"
@@ -43,6 +74,11 @@
                         <td>
                             <span class="text-gray-600">{{ user.email }}</span>
                         </td>
+                        <td>
+                            <button @click="removeUser(user)">
+                                <i class="fas fa-user-times text-gray-500"></i>
+                            </button>
+                        </td>
                     </tr>
                 </table-tool>
             </div>
@@ -56,6 +92,7 @@ import JetLabel from '../../Jetstream/Label'
 import JetButton from "../../Jetstream/Button"
 import JetInput from "../../Jetstream/Input"
 import TableTool from '../../Tools/Table'
+import {Inertia} from "@inertiajs/inertia"
 
 export default {
     name: "ShowGroupPage",
@@ -83,6 +120,12 @@ export default {
             this.form
                 .post(this.route('api.group.members.store', this.group.id), {
                     onSuccess: () => this.resetAddUserForm()
+                })
+        },
+        removeUser (user) {
+            axios.delete(this.route('api.group.members.destroy', {group: this.group.id, member: user.id}))
+                .then(() => {
+                    Inertia.reload()
                 })
         },
         resetAddUserForm () {

@@ -12,6 +12,11 @@ use Illuminate\Support\Str;
 
 class GroupMemberController extends Controller
 {
+    /**
+     * @param Request $request
+     * @param Group $group
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request, Group $group)
     {
         $user = User::where('email', $request->input('email'))->first();
@@ -32,5 +37,16 @@ class GroupMemberController extends Controller
         }
 
         return Redirect::route('group.show', ['group' => $group->id]);
+    }
+
+    /**
+     * @param Group $group
+     * @param Member $member
+     */
+    public function destroy(Group $group, Member $member)
+    {
+        $member->delete();
+
+        return response('Member Destroyed');
     }
 }

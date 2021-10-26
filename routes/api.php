@@ -23,3 +23,6 @@ Route::post('/groups', [\App\Http\Controllers\Api\GroupController::class, 'store
 
 Route::post('/groups/{group}/members', [\App\Http\Controllers\Api\GroupMemberController::class, 'store'])
     ->name('api.group.members.store');
+
+Route::delete('/groups/{group}/members/{member}', [\App\Http\Controllers\Api\GroupMemberController::class, 'destroy'])
+    ->name('api.group.members.destroy');
