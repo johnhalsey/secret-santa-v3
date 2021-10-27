@@ -26,3 +26,6 @@ Route::post('/groups/{group}/members', [\App\Http\Controllers\Api\GroupMemberCon
 
 Route::delete('/groups/{group}/members/{member}', [\App\Http\Controllers\Api\GroupMemberController::class, 'destroy'])
     ->name('api.group.members.destroy');
+
+Route::post('/groups/{group}/exceptions', [\App\Http\Controllers\Api\GroupExceptionController::class, 'store'])
+    ->name('api.group.exceptions.store');

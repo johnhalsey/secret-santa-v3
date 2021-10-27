@@ -17,7 +17,8 @@ class GroupResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'members' => MemberResource::collection($this->members)
+            'members' => MemberResource::collection($this->members),
+            'exceptions' => $this->exceptions
         ];
     }
 }

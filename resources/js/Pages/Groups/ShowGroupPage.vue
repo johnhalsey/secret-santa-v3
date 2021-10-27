@@ -33,39 +33,11 @@
                     </form>
                 </card>
 
-                <card class="">
-                    <h4>Step 2 - Add Rules</h4>
-                    <form @submit.prevent="addUser" class="mt-3">
-                        <div>
-                            <jet-label for="name" value="User name"/>
-                            <jet-input id="name"
-                                       type="text"
-                                       class="mt-1 block w-full"
-                                       v-model="form.name"
-                                       required
-                                       ref="user-name"
-                                       autofocus/>
-                        </div>
-                        <div>
-                            <jet-label for="email" value="User email"/>
-                            <jet-input id="email"
-                                       type="email"
-                                       class="mt-1 block w-full"
-                                       v-model="form.email"
-                                       required
-                                       ref="user-email"/>
-                        </div>
-                        <div class="mt-3">
-                            <jet-button class="" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                                Add User
-                            </jet-button>
-                        </div>
-                    </form>
-                </card>
+                <add-rules :group="group"></add-rules>
+
             </div>
 
             <div class="w-full md:w-1/2 lg:w-3/4 p-6 pr-0">
-
                 <table-tool>
                     <tr v-for="user in group.members">
                         <td>
@@ -91,8 +63,11 @@
 import JetLabel from '../../Jetstream/Label'
 import JetButton from "../../Jetstream/Button"
 import JetInput from "../../Jetstream/Input"
+import JetSelect from "../../Jetstream/Select"
 import TableTool from '../../Tools/Table'
 import {Inertia} from "@inertiajs/inertia"
+
+import AddRules from "../../PageComponents/Groups/AddRules"
 
 export default {
     name: "ShowGroupPage",
@@ -102,7 +77,9 @@ export default {
         JetLabel,
         JetButton,
         JetInput,
-        TableTool
+        TableTool,
+        JetSelect,
+        AddRules
     },
 
     data () {
@@ -110,7 +87,7 @@ export default {
             form: this.$inertia.form({
                 name: '',
                 email: '',
-            })
+            }),
         }
     },
 
