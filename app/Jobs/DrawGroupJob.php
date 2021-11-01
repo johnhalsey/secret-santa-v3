@@ -34,7 +34,9 @@ class DrawGroupJob
      */
     public function handle()
     {
-        $this->group->members()->withCount('exceptions')->orderBy('exceptions_count', 'desc')
+        $this->group->members()
+            ->withCount('exceptions')
+            ->orderBy('exceptions_count', 'desc')
             ->each(function ($member) {
                 $exceptions = $member->exceptions->pluck('exception_id')->toArray();
                 $exceptions[] = $member->id; // cant choose yourself

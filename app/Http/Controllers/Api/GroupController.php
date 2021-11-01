@@ -32,6 +32,9 @@ class GroupController extends Controller
         return Redirect::route('groups');
     }
 
+    /**
+     * @param Group $group
+     */
     public function draw(Group $group)
     {
         DrawGroupJob::dispatch($group);
