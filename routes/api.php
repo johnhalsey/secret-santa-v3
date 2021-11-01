@@ -29,3 +29,7 @@ Route::delete('/groups/{group}/members/{member}', [\App\Http\Controllers\Api\Gro
 
 Route::post('/groups/{group}/exceptions', [\App\Http\Controllers\Api\GroupExceptionController::class, 'store'])
     ->name('api.group.exceptions.store');
+
+Route::delete('/groups/{group}/exceptions/{exception}', [\App\Http\Controllers\Api\GroupExceptionController::class, 'destroy'])
+    ->name('api.group.exceptions.destroy');
+

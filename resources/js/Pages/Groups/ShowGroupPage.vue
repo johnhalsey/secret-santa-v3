@@ -46,13 +46,16 @@
                         <td>
                             <span class="text-gray-600">{{ user.email }}</span>
                         </td>
-                        <td>
+                        <td class="text-right">
                             <button @click="removeUser(user)">
                                 <i class="fas fa-user-times text-gray-500"></i>
                             </button>
                         </td>
                     </tr>
                 </table-tool>
+
+                <group-exceptions :rules="group.exceptions"></group-exceptions>
+
             </div>
         </div>
     </container>
@@ -68,6 +71,7 @@ import TableTool from '../../Tools/Table'
 import {Inertia} from "@inertiajs/inertia"
 
 import AddRules from "../../PageComponents/Groups/AddRules"
+import GroupExceptions from "../../PageComponents/Groups/GroupExceptions"
 
 export default {
     name: "ShowGroupPage",
@@ -79,7 +83,8 @@ export default {
         JetInput,
         TableTool,
         JetSelect,
-        AddRules
+        AddRules,
+        GroupExceptions
     },
 
     data () {

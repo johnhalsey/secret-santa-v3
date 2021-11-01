@@ -4,21 +4,21 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class GroupResource extends JsonResource
+class ExceptionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'members' => MemberResource::collection($this->members),
-            'exceptions' => ExceptionResource::collection($this->exceptions)
+            'id'             => $this->id,
+            'group_id'       => $this->group->id,
+            'member_name'    => $this->groupMember->user->name,
+            'exception_name' => $this->exceptionMember->user->name
         ];
     }
 }

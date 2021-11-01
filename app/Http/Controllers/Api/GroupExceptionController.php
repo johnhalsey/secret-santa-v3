@@ -25,4 +25,16 @@ class GroupExceptionController extends Controller
 
         return Redirect::route('group.show', [$group->id]);
     }
+
+    /**
+     * @param Group $group
+     * @param Exception $exception
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function destroy(Group $group, Exception $exception)
+    {
+        $exception->delete();
+
+        return response('Exception Destroyed');
+    }
 }
