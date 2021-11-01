@@ -1,6 +1,10 @@
 <template>
     <container>
-        <h3>{{ group.name }}</h3>
+        <div class="flex justify-between">
+            <h3>{{ group.name }}</h3>
+            <draw-group :group="group"></draw-group>
+        </div>
+
         <div class="md:flex">
 
             <div class="w-full md:w-1/2 lg:w-1/4">
@@ -23,6 +27,7 @@ import AddMembers from "../../PageComponents/Groups/AddMembers"
 import AddRules from "../../PageComponents/Groups/AddRules"
 import GroupExceptions from "../../PageComponents/Groups/GroupExceptions"
 import GroupMembers from "../../PageComponents/Groups/GroupMembers"
+import DrawGroup from "../../PageComponents/Groups/DrawGroup"
 
 export default {
     name: "ShowGroupPage",
@@ -32,7 +37,8 @@ export default {
         AddMembers,
         AddRules,
         GroupExceptions,
-        GroupMembers
+        GroupMembers,
+        DrawGroup
     }
 }
 </script>

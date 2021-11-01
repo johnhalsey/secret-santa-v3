@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\DrawGroupJob;
 use App\Models\Group;
 use App\Models\Member;
 use Illuminate\Http\Request;
@@ -29,5 +30,10 @@ class GroupController extends Controller
         ]);
 
         return Redirect::route('groups');
+    }
+
+    public function draw(Group $group)
+    {
+        DrawGroupJob::dispatch($group);
     }
 }
