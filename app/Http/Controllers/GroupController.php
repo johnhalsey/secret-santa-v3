@@ -9,6 +9,10 @@ use Inertia\Inertia;
 
 class GroupController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Inertia\Response
+     */
     public function index(Request $request)
     {
         return Inertia::render('Groups', [
@@ -16,6 +20,11 @@ class GroupController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param Group $group
+     * @return \Inertia\Response
+     */
     public function show(Request $request, Group $group)
     {
         return Inertia::render('Groups/ShowGroupPage', [
