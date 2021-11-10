@@ -2,7 +2,8 @@
     <container>
         <div class="flex justify-between">
             <h3>{{ group.name }}</h3>
-            <draw-group :group="group"></draw-group>
+            <draw-group v-if="!group.drawn_at" :group="group"></draw-group>
+            <re-draw-group v-else :group="group"></re-draw-group>
         </div>
 
         <div class="md:flex">
@@ -28,6 +29,7 @@ import AddRules from "../../PageComponents/Groups/AddRules"
 import GroupExceptions from "../../PageComponents/Groups/GroupExceptions"
 import GroupMembers from "../../PageComponents/Groups/GroupMembers"
 import DrawGroup from "../../PageComponents/Groups/DrawGroup"
+import ReDrawGroup from "../../PageComponents/Groups/ReDrawGroup"
 
 export default {
     name: "ShowGroupPage",
@@ -38,7 +40,8 @@ export default {
         AddRules,
         GroupExceptions,
         GroupMembers,
-        DrawGroup
+        DrawGroup,
+        ReDrawGroup
     }
 }
 </script>

@@ -60,4 +60,17 @@ class Group extends Model
     {
         return $this->hasMany(Selection::class);
     }
+
+    public function resetSelections()
+    {
+        $this->update([
+            'drawn_at' => NULL
+        ]);
+
+        $this->members()->update([
+            'drawn' => 0
+        ]);
+
+        $this->selections()->delete();
+    }
 }

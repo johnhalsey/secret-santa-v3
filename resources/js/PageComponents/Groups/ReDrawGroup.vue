@@ -1,13 +1,14 @@
 <template>
-    <jet-button @click.prevent="drawGroup">Draw!</jet-button>
+    <jet-button @click.prevent="reDrawGroup">Re Draw!</jet-button>
 </template>
 
 <script>
+
 import JetButton from "../../Jetstream/Button"
 import {Inertia} from "@inertiajs/inertia"
 
 export default {
-    name: "DrawGroup",
+    name: "ReDrawGroup",
     components: {
         JetButton
     },
@@ -17,8 +18,8 @@ export default {
     },
 
     methods: {
-        drawGroup () {
-            axios.post(this.route('api.group.draw', this.group.id))
+        reDrawGroup () {
+            axios.post(this.route('api.group.redraw', this.group.id))
                 .then(() => {
                     Inertia.reload({only: ['group']})
                 })
@@ -26,3 +27,7 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+</style>

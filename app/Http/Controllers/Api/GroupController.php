@@ -39,4 +39,11 @@ class GroupController extends Controller
     {
         DrawGroupJob::dispatch($group);
     }
+
+    public function redraw(Group $group)
+    {
+        $group->resetSelections();
+
+        DrawGroupJob::dispatch($group);
+    }
 }

@@ -33,7 +33,9 @@
                                   class="text-red-500 hover:text-red-900">
                                 {{group.name}}
                             </Link>
-
+                        </td>
+                        <td class="text-gray-600">
+                            <span v-if="group.drawn_at">Last drawn on {{group.drawn_at}}</span>
                         </td>
                     </tr>
                 </table-tool>

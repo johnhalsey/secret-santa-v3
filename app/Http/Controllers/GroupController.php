@@ -16,7 +16,7 @@ class GroupController extends Controller
     public function index(Request $request)
     {
         return Inertia::render('Groups', [
-            'groups' => $request->user()->groups
+            'groups' => GroupResource::collection($request->user()->groups)
         ]);
     }
 
