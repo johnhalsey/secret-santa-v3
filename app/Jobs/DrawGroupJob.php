@@ -60,6 +60,6 @@ class DrawGroupJob
             'drawn_at' => Carbon::now()
         ]);
 
-        //dispatch(new SendGroupSelectionNotificationsJob($this->group));
+        SendGroupSelectionNotificationsJob::dispatch($this->group);
     }
 }
