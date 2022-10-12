@@ -7,14 +7,9 @@
                                class="mr-3">
                     Congratulations, your group has been drawn!
                 </flash-message>
-                <draw-group v-if="!group.drawn_at"
-                            :group="group"
+                <draw-group :group="group"
                             @drawn="groupDrawn"
                 ></draw-group>
-                <re-draw-group v-else
-                               :group="group"
-                               @drawn="groupDrawn"
-                ></re-draw-group>
             </div>
         </div>
 

@@ -24,9 +24,6 @@ Route::post('/groups', [\App\Http\Controllers\Api\GroupController::class, 'store
 Route::post('/groups/{group}/draw', [\App\Http\Controllers\Api\GroupController::class, 'draw'])
     ->name('api.group.draw');
 
-Route::post('/groups/{group}/redraw', [\App\Http\Controllers\Api\GroupController::class, 'redraw'])
-    ->name('api.group.redraw');
-
 Route::post('/groups/{group}/members', [\App\Http\Controllers\Api\GroupMemberController::class, 'store'])
     ->name('api.group.members.store');
 

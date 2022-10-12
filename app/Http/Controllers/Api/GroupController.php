@@ -37,13 +37,12 @@ class GroupController extends Controller
      */
     public function draw(Group $group)
     {
-        DrawGroupJob::dispatch($group);
-    }
-
-    public function redraw(Group $group)
-    {
         $group->resetSelections();
 
-        DrawGroupJob::dispatch($group);
+        try{
+            DrawGroupJob::dispatch($group);
+        } catch (\Exception $exception) {
+            abort(500, $exception->getMessage());
+        }
     }
 }
