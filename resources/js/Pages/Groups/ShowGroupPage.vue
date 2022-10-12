@@ -2,8 +2,20 @@
     <container>
         <div class="flex justify-between">
             <h3>{{ group.name }}</h3>
-            <draw-group v-if="!group.drawn_at" :group="group"></draw-group>
-            <re-draw-group v-else :group="group"></re-draw-group>
+            <div>
+                <flash-message v-if="messages.drawn.show"
+                               class="mr-3">
+                    Congratulations, your group has been drawn!
+                </flash-message>
+                <draw-group v-if="!group.drawn_at"
+                            :group="group"
+                            @drawn="groupDrawn"
+                ></draw-group>
+                <re-draw-group v-else
+                               :group="group"
+                               @drawn="groupDrawn"
+                ></re-draw-group>
+            </div>
         </div>
 
         <div class="md:flex">
@@ -13,7 +25,7 @@
                 <add-rules :group="group"></add-rules>
             </div>
 
-            <div class="w-full md:w-1/2 lg:w-3/4 p-6 pr-0">
+            <div class="w-full md:w-1/2 lg:w-3/4 mt-6 md:mt-0 md:p-6 md:pr-0">
                 <group-members :members="group.members"></group-members>
                 <group-exceptions :rules="group.exceptions"></group-exceptions>
             </div>
@@ -30,6 +42,7 @@ import GroupExceptions from "../../PageComponents/Groups/GroupExceptions"
 import GroupMembers from "../../PageComponents/Groups/GroupMembers"
 import DrawGroup from "../../PageComponents/Groups/DrawGroup"
 import ReDrawGroup from "../../PageComponents/Groups/ReDrawGroup"
+import FlashMessage from "@/PageComponents/Misc/FlashMessage"
 
 export default {
     name: "ShowGroupPage",
@@ -41,7 +54,28 @@ export default {
         GroupExceptions,
         GroupMembers,
         DrawGroup,
-        ReDrawGroup
+        ReDrawGroup,
+        FlashMessage
+    },
+
+    data () {
+        return {
+            messages: {
+                drawn: {
+                    show: false
+                }
+            }
+        }
+    },
+
+    methods: {
+        groupDrawn () {
+            this.messages.drawn.show = true
+            let vm = this
+            setTimeout(function () {
+                vm.messages.drawn.show = false
+            }, 3000)
+        }
     }
 }
 </script>

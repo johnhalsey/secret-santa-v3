@@ -1,5 +1,8 @@
 <template>
-    <jet-button @click.prevent="drawGroup">Draw!</jet-button>
+    <jet-button @click.prevent="drawGroup">
+        <span v-if="loading"><i class="fas fa-spinner fa-pulse"></i></span>
+        <span v-else>Draw!</span>
+    </jet-button>
 </template>
 
 <script>
@@ -16,11 +19,20 @@ export default {
         group: Object
     },
 
+    data () {
+        return {
+            loading: false
+        }
+    },
+
     methods: {
         drawGroup () {
+            this.loading = true
             axios.post(this.route('api.group.draw', this.group.id))
                 .then(() => {
                     Inertia.reload({only: ['group']})
+                    this.loading = false
+                    this.$emit('drawn')
                 })
         }
     }
