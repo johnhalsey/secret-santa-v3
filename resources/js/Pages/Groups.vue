@@ -24,7 +24,7 @@
                 </card>
             </div>
 
-            <div class="w-full md:w-1/2 lg:w-3/4 p-6">
+            <div class="w-full md:w-1/2 lg:w-3/4 mt-6 md:mt-0 md:p-6">
 
                 <table-tool>
                     <tr v-for="group in groups">

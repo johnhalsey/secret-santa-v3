@@ -1,7 +1,7 @@
 <template>
     <jet-button @click.prevent="drawGroup">
         <span v-if="loading"><i class="fas fa-spinner fa-pulse"></i></span>
-        <span v-else>Draw!</span>
+        <span v-else>{{buttonText}}</span>
     </jet-button>
 </template>
 
@@ -22,6 +22,12 @@ export default {
     data () {
         return {
             loading: false
+        }
+    },
+
+    computed: {
+        buttonText () {
+            return this.group.drawn_at ? 'Re Draw!' : 'Draw!'
         }
     },
 

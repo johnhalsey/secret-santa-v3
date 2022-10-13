@@ -7,14 +7,9 @@
                                class="mr-3">
                     Congratulations, your group has been drawn!
                 </flash-message>
-                <draw-group v-if="!group.drawn_at"
-                            :group="group"
+                <draw-group :group="group"
                             @drawn="groupDrawn"
                 ></draw-group>
-                <re-draw-group v-else
-                               :group="group"
-                               @drawn="groupDrawn"
-                ></re-draw-group>
             </div>
         </div>
 
@@ -41,7 +36,6 @@ import AddRules from "../../PageComponents/Groups/AddRules"
 import GroupExceptions from "../../PageComponents/Groups/GroupExceptions"
 import GroupMembers from "../../PageComponents/Groups/GroupMembers"
 import DrawGroup from "../../PageComponents/Groups/DrawGroup"
-import ReDrawGroup from "../../PageComponents/Groups/ReDrawGroup"
 import FlashMessage from "@/PageComponents/Misc/FlashMessage"
 
 export default {
@@ -54,7 +48,6 @@ export default {
         GroupExceptions,
         GroupMembers,
         DrawGroup,
-        ReDrawGroup,
         FlashMessage
     },
 
