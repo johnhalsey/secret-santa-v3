@@ -36,7 +36,6 @@ import AddRules from "../../PageComponents/Groups/AddRules"
 import GroupExceptions from "../../PageComponents/Groups/GroupExceptions"
 import GroupMembers from "../../PageComponents/Groups/GroupMembers"
 import DrawGroup from "../../PageComponents/Groups/DrawGroup"
-import ReDrawGroup from "../../PageComponents/Groups/ReDrawGroup"
 import FlashMessage from "@/PageComponents/Misc/FlashMessage"
 
 export default {
@@ -49,7 +48,6 @@ export default {
         GroupExceptions,
         GroupMembers,
         DrawGroup,
-        ReDrawGroup,
         FlashMessage
     },
 
