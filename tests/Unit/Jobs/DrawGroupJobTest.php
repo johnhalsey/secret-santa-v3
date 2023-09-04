@@ -3,10 +3,12 @@
 namespace Tests\Unit\Jobs;
 
 use App\Jobs\DrawGroupJob;
+use App\Jobs\SendGroupSelectionNotificationsJob;
 use App\Models\Group;
 use App\Models\Member;
 use App\Models\Selection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Bus;
 use Tests\TestCase;
 
 class DrawGroupJobTest extends TestCase
@@ -32,12 +34,33 @@ class DrawGroupJobTest extends TestCase
     /** @test */
     public function job_will_mark_group_as_drawn()
     {
-        //
+        $group = Group::factory()->create([
+            'drawn_at' => null
+        ]);
+        Member::factory(20)->create([
+            'group_id' => $group->id
+        ]);
+        $this->assertNull($group->drawn_at);
+
+        DrawGroupJob::dispatch($group);
+        $group = $group->fresh();
+        $this->assertNotNull($group->drawn_at);
     }
 
     /** @test */
     public function job_will_dispatch_notifications_job()
     {
-        //
+        $group = Group::factory()->create([
+            'drawn_at' => null
+        ]);
+        Member::factory(4)->create([
+            'group_id' => $group->id
+        ]);
+        Bus::fake();
+        $job = new DrawGroupJob($group);
+        $job->handle();
+        Bus::assertDispatched(SendGroupSelectionNotificationsJob::class);
+
+
     }
 }
