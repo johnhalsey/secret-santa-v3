@@ -40,20 +40,19 @@ class DrawGroupJob
     public function handle()
     {
         try {
-            $this->group->members()
+            $members = $this->group->members()
                 ->withCount('exceptions')
                 ->orderBy('exceptions_count', 'desc')
                 ->each(function ($member) {
                     $exceptions = $member->exceptions->pluck('exception_id')->toArray();
-                    Log::info($exceptions);
                     $exceptions[] = $member->id; // cant choose yourself
-                    Log::info($exceptions);
                     $selectedUser = $this->group->members()
                         ->whereNotIn('id', $exceptions)
                         ->where('drawn', 0)
                         ->inRandomOrder()
                         ->first();
 
+                    // If we can't find a user, we need to reset the selections and try again
                     $selectedUser->drawn = 1;
                     $selectedUser->save();
 
@@ -70,6 +69,7 @@ class DrawGroupJob
 
             SendGroupSelectionNotificationsJob::dispatch($this->group);
         } catch (\Exception $exception) {
+            Log::info($exception->getMessage());
             $this->tried++;
             Log::info('tried ' . $this->tried);
             if ($this->tried < $this->tries) {

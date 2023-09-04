@@ -4,6 +4,7 @@ namespace Tests\Unit\Jobs;
 
 use App\Jobs\DrawGroupJob;
 use App\Jobs\SendGroupSelectionNotificationsJob;
+use App\Models\Exception;
 use App\Models\Group;
 use App\Models\Member;
 use App\Models\Selection;
@@ -60,7 +61,5 @@ class DrawGroupJobTest extends TestCase
         $job = new DrawGroupJob($group);
         $job->handle();
         Bus::assertDispatched(SendGroupSelectionNotificationsJob::class);
-
-
     }
 }

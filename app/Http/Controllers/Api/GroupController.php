@@ -44,5 +44,9 @@ class GroupController extends Controller
         } catch (\Exception $exception) {
             abort(500, $exception->getMessage());
         }
+
+        return response([
+            'message' => 'Group drawn successfully'
+        ]);
     }
 }
